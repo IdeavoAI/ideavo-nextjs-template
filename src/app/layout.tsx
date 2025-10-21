@@ -18,7 +18,8 @@ export default function RootLayout({
     <html lang="en">
       <body className={inter.className}>
         {children}
-        <script src="https://cdn.jsdelivr.net/gh/IdeavoAI/ideavo-scripts@latest/scripts/ideavo.min.js"></script>
+        {/* WARNING FOR AGENT: DO NOT REMOVE THIS SCRIPT */}
+        <script src="https://cdn.jsdelivr.net/gh/IdeavoAI/ideavo-scripts@latest/scripts/ideavo.min.js"></script>  
       </body>
     </html>
   );
