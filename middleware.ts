@@ -2,11 +2,6 @@ import { NextResponse } from 'next/server'
 import type { NextRequest } from 'next/server'
 
 export function middleware(request: NextRequest) {
-  // Skip middleware for the env-check page itself to avoid infinite redirects
-  if (request.nextUrl.pathname === '/env-check') {
-    return NextResponse.next()
-  }
-
   // Skip middleware for API routes, static files, and Next.js internals
   if (
     request.nextUrl.pathname.startsWith('/api/') ||
