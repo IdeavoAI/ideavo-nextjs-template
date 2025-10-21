@@ -1,17 +1,25 @@
 import type { NextConfig } from "next";
+import path from "node:path";
+
+const LOADER = path.resolve(
+  process.cwd(),
+  "node_modules/@ideavo/webpack-tagger/dist/index.js"
+);
 
 const nextConfig: NextConfig = {
-  images: { unoptimized: true },
-  devIndicators: false,
-  webpack: config => {
-    config.module.rules.push({
-      test: /.(jsx|tsx)$/,
-      exclude: /node_modules/,
-      enforce: "pre",
-      use: "@ideavo/webpack-tagger"
-    });
-
-    return config;
-  }
+  images: {
+    remotePatterns: [
+      { protocol: "https", hostname: "**" },
+      { protocol: "http", hostname: "**" },
+    ],
+  },
+  turbopack: {
+    rules: {
+      "*.{jsx,tsx}": {
+        loaders: [LOADER],
+      },
+    },
+  },
 };
+
 export default nextConfig;
