@@ -2,7 +2,7 @@
 
 ## Runtime Environment
 - **Sandbox**: This application runs in an E2B sandbox environment
-- **Preview Access**: The application preview is accessible to users via an E2B-exposed URL
+- **Preview Access**: The application preview is accessible to users via an E2B-exposed URL embedded within an iframe.
 
 ## Development Server
 - **Port**: The development server runs on port 4000
@@ -18,6 +18,6 @@
 - **Running Scripts**: `bun run <script-name>`
 
 ## Quality Checks
-- **Type Checking**: After completing tasks, run `bun run typecheck` to verify type safety
+- **Linting**: After completing tasks, run `bun run lint` to verify code quality and catch syntax errors
 - **Build Command**: Do NOT run the build command unless the user explicitly requests it
-- **Default Verification**: Use typecheck as the standard post-completion verification step
+- **Default Verification**: Use linting as the standard post-completion verification step
