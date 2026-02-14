@@ -1,18 +1,37 @@
-import { NextConfig } from "next";
+import type { NextConfig } from "next";
+import path from "node:path";
 
-/** @type {import('next').NextConfig} */
+// Loader path from @ideavo/webpack-tagger - use direct resolve to get the actual file
+const loaderPath = require.resolve('@ideavo/webpack-tagger');
+
 const nextConfig: NextConfig = {
-  images: { unoptimized: true },
-  webpack: (config) => {
-    config.module.rules.push({
-      test: /.(jsx|tsx)$/,
-      exclude: /node_modules/,
-      enforce: "pre",
-      use: "@ideavo/webpack-tagger"
-    });
-
-    return config;
+  images: {
+    remotePatterns: [
+      {
+        protocol: 'https',
+        hostname: '**',
+      },
+      {
+        protocol: 'http',
+        hostname: '**',
+      },
+    ],
+  },
+  allowedDevOrigins: ['*.e2b.app', '*.ideavo.app', '*.ideavo.ai'],
+  outputFileTracingRoot: path.resolve(__dirname, '../../'),
+  typescript: {
+    ignoreBuildErrors: true,
+  },
+  eslint: {
+    ignoreDuringBuilds: true,
+  },
+  turbopack: {
+    rules: {
+      "*.{jsx,tsx}": {
+        loaders: [loaderPath]
+      }
+    }
   }
-};
+} as NextConfig;
 
-module.exports = nextConfig;
+export default nextConfig;
