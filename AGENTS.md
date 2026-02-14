@@ -2,7 +2,7 @@
 
 ## Runtime Environment
 - **Sandbox**: This application runs in an E2B sandbox environment
-- **Preview Access**: The application preview is accessible to users via an E2B-exposed URL
+- **Preview Access**: The application preview is accessible to users via an E2B-exposed URL embedded within an iframe.
 
 ## Development Server
 - **Port**: The development server runs on port 4000
