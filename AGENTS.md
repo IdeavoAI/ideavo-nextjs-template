@@ -18,6 +18,6 @@
 - **Running Scripts**: `bun run <script-name>`
 
 ## Quality Checks
-- **Linting**: After completing tasks, run `bun run lint` to verify code quality and catch syntax errors
+- **Type Checking**: After completing tasks, run `bun run typecheck` to verify type safety
 - **Build Command**: Do NOT run the build command unless the user explicitly requests it
-- **Default Verification**: Use linting as the standard post-completion verification step
+- **Default Verification**: Use typecheck as the standard post-completion verification step
