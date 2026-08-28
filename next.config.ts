@@ -3,6 +3,14 @@ import type { NextConfig } from "next";
 const nextConfig: NextConfig = {
   cacheComponents: true,
   reactCompiler: true,
+  turbopack: {
+    rules: {
+      "*.{jsx,tsx}": {
+        condition: { not: "foreign" },
+        loaders: [require.resolve("@ideavo/webpack-tagger")],
+      },
+    },
+  },
   images: {
     unoptimized: process.env.NODE_ENV === "development",
     remotePatterns: [
