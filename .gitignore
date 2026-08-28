@@ -113,3 +113,5 @@ $RECYCLE.BIN/
 
 # Ideavo specific
 .ideavo/project
+# next-agents-md
+.next-docs/
