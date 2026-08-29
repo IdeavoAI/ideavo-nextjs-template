@@ -1,7 +1,6 @@
 import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
-  cacheComponents: true,
   reactCompiler: true,
   images: {
     unoptimized: process.env.NODE_ENV === 'development',
