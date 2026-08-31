@@ -2,6 +2,7 @@ import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
   reactCompiler: true,
+  cacheComponents:false,
   images: {
     unoptimized: process.env.NODE_ENV === 'development',
     remotePatterns: [
