@@ -6,7 +6,7 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "typecheck": "tsc --noEmit"
+    "typecheck": "NODE_OPTIONS=--max-old-space-size=1024 tsc --noEmit"
   },
   "dependencies": {
     "@hookform/resolvers": "^5.2.2",
