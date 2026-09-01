@@ -1,10 +1,10 @@
 import type { NextConfig } from "next";
 
-// Loader path from @ideavo/webpack-tagger - use direct resolve to get the actual file
-const loaderPath = require.resolve('@ideavo/webpack-tagger');
-
 const nextConfig: NextConfig = {
+  reactCompiler: true,
+  cacheComponents:false,
   images: {
+    unoptimized: process.env.NODE_ENV === 'development',
     remotePatterns: [
       {
         protocol: 'https',
@@ -26,10 +26,11 @@ const nextConfig: NextConfig = {
   turbopack: {
     rules: {
       "*.{jsx,tsx}": {
-        loaders: [loaderPath]
-      }
-    }
-  }
+        condition: { not: 'foreign' },
+        loaders: [require.resolve('@ideavo/webpack-tagger')],
+      },
+    },
+  },
 } as NextConfig;
 
 export default nextConfig;
