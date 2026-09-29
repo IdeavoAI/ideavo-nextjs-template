@@ -12,12 +12,13 @@
   1. First kill any existing process on port 4000
   2. Then start the new server instance using `bun run dev --port 4000`
 
-## Memory Safety (earlyoom)
-- **Watchdog**: The sandbox may run `earlyoom`, which monitors free memory and kills a process once free memory drops below ~5%
-- **Likely target**: `next-server` is typically the largest memory consumer, so it's the most likely process to get killed — this can happen mid-session for reasons unrelated to the code just written
-- **Diagnosing a kill**: If the dev server appears down, run `journalctl -u earlyoom > <scratch-path>` and check it for a kill event around that time to confirm whether earlyoom was the cause
-- **No auto-restart**: earlyoom does not restart what it kills. Do NOT attempt to restart the dev server yourself
-- **If it happened**: Stop running further live checks immediately. Report to the user right away instead of continuing — e.g. "next-server was not running, it needs a restart on your end. Once it's back up, I'll continue with the remaining checks."
+## Memory Safety
+- **Sandbox memory watchdog**: The sandbox may terminate processes automatically when available memory becomes critically low. This is infrastructure-controlled behavior and is unrelated to the code being modified.
+- **Process termination**: A development server or other high-memory process may disappear unexpectedly if the memory watchdog intervenes.
+- **Diagnostics**: The agent does not have access to the infrastructure-level watchdog's privileged state or logs. Do not attempt to access, modify, restart, disable, or otherwise interact with the watchdog.
+- **No auto-restart**: If a development server is no longer running, do NOT restart it yourself.
+- **If the dev server stops unexpectedly**: Stop all live checks and ask the user to restart it. Do not attempt to restart it yourself.
+
 
 ## Package Management
 - **Package Manager**: Use `bun` for all package management operations
