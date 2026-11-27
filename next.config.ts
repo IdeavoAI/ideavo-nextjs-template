@@ -16,8 +16,6 @@ const nextConfig: NextConfig = {
       },
     ],
   },
-  // Sandbox preview hosts (e2b.app, agent37.app, on.boat.dev). '**' spans any number of
-  // labels; a bare '*' or '**' matches nothing in Next.js
   allowedDevOrigins: ['**.app', '**.dev', '**.ai'],
   typescript: {
     ignoreBuildErrors: true,
