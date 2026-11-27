@@ -16,8 +16,9 @@ const nextConfig: NextConfig = {
       },
     ],
   },
-  // A bare '*' matches nothing in Next.js: each preview domain is listed
-  allowedDevOrigins: ['*.e2b.app', '*.on.boat.dev', '*.agent37.app'],
+  // Sandbox preview hosts (e2b.app, agent37.app, on.boat.dev). '**' spans any number of
+  // labels; a bare '*' or '**' matches nothing in Next.js
+  allowedDevOrigins: ['**.app', '**.dev', '**.ai'],
   typescript: {
     ignoreBuildErrors: true,
   },
