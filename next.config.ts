@@ -16,6 +16,7 @@ const nextConfig: NextConfig = {
       },
     ],
   },
+  // removing this will lead to preview issues within ideavo iframe.
   allowedDevOrigins: ['**.app', '**.dev', '**.ai'],
   typescript: {
     ignoreBuildErrors: true,
